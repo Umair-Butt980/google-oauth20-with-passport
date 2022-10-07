@@ -1,0 +1,41 @@
+#org: UmairButt
+app: appstore-google-reviews
+service: appstore-google-reviews
+#frameworkVersion: '3'
+provider:
+  name: aws
+  runtime: nodejs16.x
+plugins:
+  - serverless-offline
+
+functions:
+  api:
+    handler: handler.handler
+    events:
+      - http:
+          path: /authorizeGoogleBusiness
+          method: GET
+          cors:
+            origin: "*" # <-- Specify allowed origin
+            headers: "*"
+
+      - http:
+          path: /callBack
+          method: GET
+          cors:
+            origin: "*" # <-- Specify allowed origin
+            headers: "*"
+
+      - http:
+          path: /failed
+          method: GET
+          cors:
+            origin: "*" # <-- Specify allowed origin
+            headers: "*"
+
+      - http:
+          path: /success
+          method: GET
+          cors:
+            origin: "*" # <-- Specify allowed origin
+            headers: "*"
