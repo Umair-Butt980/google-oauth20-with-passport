@@ -11,6 +11,7 @@ plugins:
 functions:
   api:
     handler: handler.handler
+    environment: ${file(env.${opt:stage, self:provider.stage}.json)}
     events:
       - http:
           path: /authorizeGoogleBusiness
